@@ -21,24 +21,17 @@ export const MainBtn = styled(Button)`
     outline: none;
   }
   &:link {
-    color: #F0F8FF;
     border: none !important;
     outline: none !important;
   }
   
   /* visited link */
   &:visited {
+    border: none !important;
     color: #00FF00;
   }
-  
-  /* mouse over link */
-  &:hover {
-    color: #FF00FF;
-  }
-  
-  /* selected link */
   &:active {
-    color: #0000FF;
+    border: none !important;
   }
   
 `
