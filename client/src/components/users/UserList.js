@@ -16,7 +16,7 @@ const UserList = ({ users }) => (
             <Col>
               <Card style={{ width: '14rem' }}>
                 <Card.Body>
-                  <Card.Img variant="top" src={u.image} />
+                  <Card.Img variant="top" src={u.image} style={{width: '200px', height: '200px'}}/>
                   <Card.Title className="mt-4"> {u.first} {u.last}</Card.Title>
                   <Card.Text className="mt-2">
                     phone: {u.phone}

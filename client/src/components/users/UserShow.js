@@ -25,7 +25,7 @@ const UserShow = () => {
     <>
 
     <Centered>
-    <InfoDoctor>
+    <InfoDoctor style={{padding: '20px',display: 'flex',flexDirection: 'column', gap : '10px'}}>
       <h1>
          {first} {last}
       </h1>

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  appdate: 2022-06-29 23:47:37
+  apptime: 2022-06-29 23:47:37
+  user: MyString
+  why: MyString
+  user: one
+  doctor: one
+
+two:
+  appdate: 2022-06-29 23:47:37
+  apptime: 2022-06-29 23:47:37
+  user: MyString
+  why: MyString
+  user: two
+  doctor: two

@@ -29,10 +29,10 @@ const DoctorShow = () => {
       <Centered>
         <RoundPicture src={image} width="600px"></RoundPicture>
         <InfoDoctor>
-          <h1>
+          <h2>
             Dr. {first_name} {last_name}
-          </h1>
-          <h4>{specicialist} </h4>
+          </h2>
+          <h5>{specicialist} </h5>
         </InfoDoctor>
         <Buttons>
           <BtnCrud className ="btn-crud">
