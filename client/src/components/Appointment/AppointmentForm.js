@@ -35,13 +35,14 @@ const AppointmentForm = ({addApp}) => {
   }
   return (
     <>
-    <h3> Add Doctor</h3>
+    <h3 style={{ color: '#64FCD9', textAlign: 'center' }}> Make an Appointment</h3>
 
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label> appointment Date</Form.Label>
           <Form.Control
-            name="first name"
+             type="date"
+            name="Date"
             value={appt.appdate}
             onChange={(e) =>
               setAppt({ ...appt, appdate: e.target.value })
@@ -53,6 +54,7 @@ const AppointmentForm = ({addApp}) => {
         <Form.Group className="mb-3">
           <Form.Label>Appointment time</Form.Label>
           <Form.Control
+          type="time"
             name="last name"
             value={appt.apptime}
             onChange={(e) =>
@@ -83,6 +85,8 @@ const AppointmentForm = ({addApp}) => {
             }
             placeholder="reason"
             required
+            as="textarea" 
+            rows={3} 
           />
         </Form.Group>
 

@@ -1,27 +1,35 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const DoctorForm = ({ addDoctor }) => {
+const DoctorForm = ({ addDoctor, id, first_name, last_name, image, specicialist, setEdit, updateDoctor }) => {
   const [doctor, setDoctor] = useState({
     first_name: '',
     last_name: '',
     image: '',
     specicialist: ' ',
   })
+
+  useEffect( () => {
+    if (id) {
+      setDoctor({ first_name, last_name, image, specicialist })
+    }
+  }, [])
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    addDoctor(doctor)
-    setDoctor({
-      first_name: '',
-      last_name: '',
-      image: '',
-      specicialist: '',
-    })
+
+    if (id) {
+      updateDoctor(id, doctor)
+      setEdit(false)
+    } else {
+      addDoctor(doctor)
+    }
+    setDoctor({ first_name: '', last_name: '', image: '', specicialist: '' })
   }
   return (
     <>
-      <h3 style={{ color: '#64FCD9', textAlign: 'center' }}> Add Doctor</h3>
+      <h3 style={{ color: '#64FCD9', textAlign: 'center' }}> <h1>{ id ? 'Edit' : 'Add'} Doctor</h1></h3>
 
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">

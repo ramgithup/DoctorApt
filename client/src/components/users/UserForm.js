@@ -1,18 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-const UserForm = ({ addUser }) => {
+const UserForm = ({ addUser, id, first, last, image, phone, setEdit, updateUser  }) => {
   const [user, setUser] = useState({ first: '', last: '', image: '', phone: '' })
+
+
+
+  useEffect( () => {
+    if (id) {
+      setUser({ first, last, image , phone})
+    }
+  }, [])
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addUser(user)
+    if (id) {
+      updateUser(id, user)
+      setEdit(false)
+    } else {
+      addUser(user)
+    }
     setUser({ first: '', last: '', image: '', phone: '' })
   }
 
   return (
     <>
-      <h1 style={{color: '#64FCD9', textAlign: 'center'}}>Create User</h1>
+      <h1 style={{color: '#64FCD9', textAlign: 'center'}}>{id ? 'Edit' : 'Create'} User</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>First Name</Form.Label>

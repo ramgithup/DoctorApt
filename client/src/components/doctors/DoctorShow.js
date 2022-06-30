@@ -79,7 +79,7 @@ const DoctorShow = ({UpdateDoctor, deleteDoctor}) => {
           </BtnCrud>
         </Buttons>
 
-        <h1 style={{marginTop: " 40px", textAlign:"center"}}>All of the Appointment for the doctor</h1>
+        <h1 style={{marginTop: " 40px", textAlign:"center"}}>All of the Appointment for the {first_name}</h1>
       <ul>
         { doctorUsers.map( du => 
           <>

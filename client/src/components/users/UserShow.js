@@ -74,7 +74,7 @@ const UserShow = ({updateUser, deleteUser}) => {
     </Buttons>
 
     <br />
-    <h1 style={{marginTop: '60px', textAlign: 'center'}}> doctors for this user</h1>
+    <h1 style={{marginTop: '60px', textAlign: 'center'}}> doctors for this {first}</h1>
       { UserDoctors.map( ud => 
         <div>
           <h1>{ud.first}</h1>
