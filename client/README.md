@@ -68,3 +68,64 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+//const [users, setUsers] = useState([])
+
+
+useEffect( () =>{
+    axios.get('/api/users')
+      .then( res => {
+        setUsers(res.data)
+      })
+      .catch( err => console.log(err))
+  }, [])
+
+  const addUser = (user) => {
+    axios.post('/api/users', { user })
+      .then( res => {
+        setUsers([...users, res.data])
+      })
+      .catch( err => console.log(err))
+  }
+
+
+
+
+
+useEffect(() => {
+    axios.get('/api/doctors').then((res) => {
+      setDoctors(res.data).catch((err) => console.log(err))
+    })
+  }, [])
+
+  const addDoctor = (doctor) => {
+    axios
+      .post('/api/doctors', { doctor })
+      .then((res) => {
+        setDoctors([...doctors, res.data])
+      })
+      .catch((err) => console.log(err))
+  }
+
+  const UpdateDoctor = (id, doctor) => {
+    axios.put(`/api/doctors/${id}`, { doctor })
+      .then( res => {
+        let newUpdatedDoctor = doctors.map( d => {
+          if (d.id === id) {
+            return res.data 
+          }
+          return d
+        })
+        setDoctors(newUpdatedDoctor)
+      })
+      .catch( err => console.log(err) )
+  }
+
+  const deleteDoctor = (id) => {
+    axios.delete(`/api/doctors/${id}`)
+      .then(res => {
+        setDoctors(doctors.filter( d => d.id !== id ))
+      })
+      .catch( err => console.log(err) )
+  }

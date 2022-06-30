@@ -1,6 +1,8 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const AppointmentForm = ({addApp}) => {
   const [appt, setAppt] = useState({
@@ -8,7 +10,17 @@ const AppointmentForm = ({addApp}) => {
     apptime: '',
     user: '',
     why: ' ',
+    user_id: 0
   })
+
+  const { doctorId } = useParams()
+
+  useEffect( () => {
+    axios.get(`/api/doctors/${doctorId}/appointments`)
+      .then( res => setAppt(res.data))
+      .catch( err => console.log(err))
+  }, [])
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,7 +29,8 @@ const AppointmentForm = ({addApp}) => {
       appdate: '',
     apptime: '',
     user: '',
-    why: ' '
+    why: ' ',
+    user_id: 0
     })
   }
   return (

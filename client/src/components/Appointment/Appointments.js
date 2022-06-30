@@ -1,12 +1,10 @@
-import { useParams, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import AppointmentList from './AppointmentList';
+import { useParams, useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import AppointmentList from './AppointmentList'
 import { Modal } from 'react-bootstrap'
-import {MainBtn} from '../shared/styles/Style'
-import AppoinmentForm from './AppointmentForm';
-
-
+import { MainBtn } from '../shared/styles/Style'
+import AppoinmentForm from './AppointmentForm'
 
 const Appointments = () => {
   const [appointments, setAppointments] = useState([])
@@ -15,15 +13,14 @@ const Appointments = () => {
   const { firstName } = location.state
   const [adding, setAdd] = useState(false)
 
-  useEffect( () => {
-    //axios.get(`/api/courses/${courseId}/enrollments`)
-    axios.get(`/api/doctors/${doctoreId}/appointments`)
-      .then( res => {
+  useEffect(() => {
+    axios
+      .get(`/api/doctors/${doctoreId}/appointments`)
+      .then((res) => {
         setAppointments(res.data)
       })
-      .catch( err => console.log(err))
+      .catch((err) => console.log(err))
   }, [])
-
 
   const addApp = (appointment) => {
     axios
@@ -32,24 +29,21 @@ const Appointments = () => {
         setAppointments([...appointments, res.data])
       })
       .catch((err) => console.log(err))
-  }  
+  }
   return (
     <>
-    <MainBtn onClick={() => setAdd(true)} >+</MainBtn>
+      <MainBtn onClick={() => setAdd(true)}>+</MainBtn>
 
-    <Modal show={adding} onHide={() => setAdd(false)}>
-      <Modal.Header closeButton>
-      </Modal.Header>
-      <Modal.Body>
-      <AppoinmentForm addApp={addApp} />
-      </Modal.Body>
-    </Modal>
-    <h2>All Appointments for {firstName}</h2>
-    <AppointmentList appointments={appointments}
-     
-    />
+      <Modal show={adding} onHide={() => setAdd(false)}>
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body>
+          <AppoinmentForm addApp={addApp} />
+        </Modal.Body>
+      </Modal>
+      <h2>All Appointments for {firstName}</h2>
+      <AppointmentList appointments={appointments} />
     </>
   )
 }
 
-export default Appointments;
+export default Appointments

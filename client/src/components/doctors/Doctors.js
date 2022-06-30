@@ -4,50 +4,17 @@ import CourseList from './DoctorsList'
 import DoctorForm from './DoctorForm'
 import { Modal } from 'react-bootstrap'
 import {MainBtn} from '../shared/styles/Style'
+import {DoctorConsumer} from '../../providers/DoctorProvider';
 
-const Doctors = () => {
-  const [doctors, setDoctors] = useState([])
+const Doctors = ({addDoctor, doctors} ) => {
+  
   const [adding, setAdd] = useState(false)
 
-  useEffect(() => {
-    axios.get('/api/doctors').then((res) => {
-      setDoctors(res.data).catch((err) => console.log(err))
-    })
-  }, [])
-
-  const addDoctor = (doctor) => {
-    axios
-      .post('/api/doctors', { doctor })
-      .then((res) => {
-        setDoctors([...doctors, res.data])
-      })
-      .catch((err) => console.log(err))
-  }
-
-  const UpdateDoctor = (id, doctor) => {
-    axios.put(`/api/doctors/${id}`, { doctor })
-      .then( res => {
-        let newUpdatedDoctor = doctors.map( d => {
-          if (d.id === id) {
-            return res.data 
-          }
-          return d
-        })
-        setDoctors(newUpdatedDoctor)
-      })
-      .catch( err => console.log(err) )
-  }
-
-  const deleteDoctor = (id) => {
-    axios.delete(`/api/doctors/${id}`)
-      .then(res => {
-        setDoctors(doctors.filter( d => d.id !== id ))
-      })
-      .catch( err => console.log(err) )
-  }
+  
+  
 
   return (
-    <>
+    <div>
     <MainBtn onClick={() => setAdd(true)} >+</MainBtn>
 
     <Modal show={adding} onHide={() => setAdd(false)}>
@@ -59,8 +26,13 @@ const Doctors = () => {
     </Modal>
       
       <CourseList doctors={doctors} />
-    </>
+    </div>
   )
 }
+const ConnectedDoctors =(props)=>(
+ <DoctorConsumer>
+ {value => <Doctors {...props} {...value}/>}
+ </DoctorConsumer>
 
-export default Doctors
+)
+export default ConnectedDoctors;

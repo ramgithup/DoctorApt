@@ -1,32 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import UserList from './UserList';
 import UserForm from './UserForm';
 import { Modal } from 'react-bootstrap'
 import {MainBtn} from '../shared/styles/Style';
+import { UserConsumer } from '../../providers/UserProvider';
 
-const Users = () => {
-  const [users, setUsers] = useState([])
+const Users = ({users, addUser }) => {
+  
   const [adding, setAdd] = useState(false)
 
-  useEffect( () =>{
-    axios.get('/api/users')
-      .then( res => {
-        setUsers(res.data)
-      })
-      .catch( err => console.log(err))
-  }, [])
-
-  const addUser = (user) => {
-    axios.post('/api/users', { user })
-      .then( res => {
-        setUsers([...users, res.data])
-      })
-      .catch( err => console.log(err))
-  }
+  
 
   return(
     <>
+
     <MainBtn onClick={() => setAdd(true)} >+</MainBtn>
 
     <Modal show={adding} onHide={() => setAdd(false)}>
@@ -41,5 +29,10 @@ const Users = () => {
     </>
   )
 }
+const ConnectedUsers = (props) => (
+  <UserConsumer>
+    { value => <Users {...props} {...value} /> }
+  </UserConsumer>
+)
 
-export default Users;
+export default ConnectedUsers;
