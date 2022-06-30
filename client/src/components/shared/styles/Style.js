@@ -85,4 +85,24 @@ export const FooterWrap = styled.div`
   display: inline;
 `
 
+export const ContactNum = styled.button`
+  width: 237px;
+  height: 48px;
+  color: #FFB61D;
+  top: 16px;
+  left: 64px;
+  padding: 12px 24px 12px 24px;
+  background: #fff;
+  border: 1px solid #000;
+  
+`
+export const DoctorImg = styled.img`
+  width: 400px;
+  height: 400px;
+`
+export const HeaderBtns = styled.div`
+margin:0 20px;
+align-items: left !important;
+`
+
  

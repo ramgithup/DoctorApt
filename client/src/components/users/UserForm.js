@@ -12,7 +12,7 @@ const UserForm = ({ addUser }) => {
 
   return (
     <>
-      <h1>Create User</h1>
+      <h1 style={{color: '#64FCD9', textAlign: 'center'}}>Create User</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>First Name</Form.Label>

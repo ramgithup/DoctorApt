@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const DoctorForm = ({addDoctor}) => {
+const DoctorForm = ({ addDoctor }) => {
   const [doctor, setDoctor] = useState({
     first_name: '',
     last_name: '',
@@ -10,18 +10,18 @@ const DoctorForm = ({addDoctor}) => {
     specicialist: ' ',
   })
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     addDoctor(doctor)
     setDoctor({
       first_name: '',
       last_name: '',
       image: '',
-      specicialist: ''
+      specicialist: '',
     })
   }
   return (
     <>
-      <h3> Add Doctor</h3>
+      <h3 style={{ color: '#64FCD9', textAlign: 'center' }}> Add Doctor</h3>
 
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
@@ -32,7 +32,7 @@ const DoctorForm = ({addDoctor}) => {
             onChange={(e) =>
               setDoctor({ ...doctor, first_name: e.target.value })
             }
-            placeholder="first name"
+            placeholder=""
             required
           />
         </Form.Group>
@@ -44,7 +44,7 @@ const DoctorForm = ({addDoctor}) => {
             onChange={(e) =>
               setDoctor({ ...doctor, last_name: e.target.value })
             }
-            placeholder="last_name"
+            placeholder=""
             required
           />
         </Form.Group>
@@ -54,7 +54,7 @@ const DoctorForm = ({addDoctor}) => {
             name="image"
             value={doctor.image}
             onChange={(e) => setDoctor({ ...doctor, image: e.target.value })}
-            placeholder="image"
+            placeholder=""
             required
           />
         </Form.Group>
@@ -67,7 +67,7 @@ const DoctorForm = ({addDoctor}) => {
             onChange={(e) =>
               setDoctor({ ...doctor, specicialist: e.target.value })
             }
-            placeholder="specicialist"
+            placeholder=""
             required
           />
         </Form.Group>
@@ -80,4 +80,4 @@ const DoctorForm = ({addDoctor}) => {
   )
 }
 
-export default DoctorForm;
+export default DoctorForm

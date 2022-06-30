@@ -1,6 +1,6 @@
 class Api::AppointmentsController < ApplicationController
   before_action :set_doctor
-  before_action :set_appointment, only [:show, :update, :destroy]
+  before_action :set_appointment, only: [ :show , :update , :destroy]
 
   def index
     render json: @doctor.appointments
@@ -8,6 +8,15 @@ class Api::AppointmentsController < ApplicationController
 
   def show
     render json: @appointment
+  end
+
+  def userAppointment
+  render json: @doctor.users
+  end
+
+  def cancelAppointment
+    @users = User.all - @doctor.users
+    render json: @users
   end
 
   def create
@@ -38,7 +47,7 @@ class Api::AppointmentsController < ApplicationController
     end
 
     def set_doctor
-      @doctor = Appointment.find(params[:doctor_id])
+      @doctor = Doctor.find(params[:doctor_id])
     end
 
     def set_appointment

@@ -9,23 +9,35 @@
   'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60',
   'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60',
   'https://images.unsplash.com/flagged/photo-1573740144655-bbb6e88fb18a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60']
-Doctor.delete_all 
-User.delete_all
+  
+  Appointment.delete_all
+  Doctor.delete_all 
+  # User.delete_all
 
 10.times do
-  Doctor.create(
+  @doctor = Doctor.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.male_first_name,
     image: @images.sample,
     specicialist: @spec.sample
   )
   5.times do
-   User.create(
+   @user = User.create(
      first: Faker::Name.first_name,
      last: Faker::Name.male_first_name,
      image: @users_img.sample,
      phone: Faker::PhoneNumber.cell_phone
    )
+
+  #  Appointment.create(
+  #   appdate: Faker::Date.in_date_period(month: 6),
+  #   apptime: Faker::Time.forward( period: :morning),
+  #   user: Faker::Name.middle_name ,
+  #   why: Faker::Lorem.sentence(word_count: 5, supplemental: true),
+  #   user_id: @user.id ,
+  #   doctor_id:@doctor.id
+
+  # )
   end
 end
 

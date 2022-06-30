@@ -5,7 +5,7 @@ const MainNavbar = () => (
   <>
     <Navbar>
       <Container>
-        <Link to='/' style={{textDecoration:"none"}}><Navbar.Brand style={{color: '#64FCD9'}}><span style={{ fontWeight: '800',}}>Dr</span>Appt</Navbar.Brand></Link>
+        <Link to='/' style={{textDecoration:"none", fontSize: "30px"}}><Navbar.Brand style={{color: '#64FCD9'}}><span style={{ fontWeight: '800',}}>Dr</span>Appt</Navbar.Brand></Link>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Nav.Link>
